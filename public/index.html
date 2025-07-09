@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2phi WEAC Landing Page</title>
+  <link rel="icon" type="image/jpeg" href="assets/favicon.jpg">
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+      background: linear-gradient(135deg, #f8fafc 0%, #e0e7ef 100%);
+      min-height: 100vh;
+      color: #222;
+      overflow-x: hidden;
+    }
+    .container {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 1.2s cubic-bezier(.4,0,.2,1);
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: none; }
+    }
+    .logo {
+      width: 160px;
+      height: 160px;
+      object-fit: contain;
+      margin-bottom: 2rem;
+      filter: drop-shadow(0 4px 16px rgba(0,0,0,0.08));
+      transition: transform 0.3s cubic-bezier(.4,0,.2,1);
+    }
+    .logo:hover {
+      transform: scale(1.07) rotate(-2deg);
+    }
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin: 0 0 1.2rem 0;
+      letter-spacing: 0.01em;
+      background: linear-gradient(90deg, #1e293b 30%, #64748b 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .links {
+      display: flex;
+      gap: 2rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .link-card {
+      background: rgba(255,255,255,0.85);
+      border-radius: 1.2rem;
+      box-shadow: 0 2px 16px 0 rgba(30,41,59,0.07);
+      padding: 1.1rem 2.2rem;
+      text-align: center;
+      text-decoration: none;
+      color: #1e293b;
+      font-size: 1.1rem;
+      font-weight: 500;
+      transition: box-shadow 0.2s, transform 0.2s, background 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .link-card:after {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; right: 0; bottom: 0;
+      background: linear-gradient(120deg, #e0e7ef 0%, #f1f5f9 100%);
+      opacity: 0;
+      transition: opacity 0.3s;
+      z-index: 0;
+    }
+    .link-card:hover {
+      box-shadow: 0 6px 32px 0 rgba(30,41,59,0.13);
+      transform: translateY(-4px) scale(1.03);
+      background: rgba(236,245,255,0.97);
+    }
+    .link-card:hover:after {
+      opacity: 1;
+    }
+    .link-card span {
+      position: relative;
+      z-index: 1;
+    }
+    @media (max-width: 600px) {
+      .links { gap: 1rem; }
+      .link-card { padding: 0.8rem 1.2rem; font-size: 1rem; }
+      .logo { width: 110px; height: 110px; }
+      h1 { font-size: 1.3rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="assets/logo.png" alt="2phi WEAC Logo" class="logo" />
+    <h1>2phi WEAC</h1>
+    <div class="links">
+      <a class="link-card" href="https://github.com/2phi/weac" target="_blank" rel="noopener"><span>Weak-layer anticrack nucleation model (WEAC) on GitHub</span></a>
+      <a class="link-card" href="https://www.ismd.tu-darmstadt.de/forschung_ismd/gruppen/center_of_snow_and_avalanche_research/csar_ismd.en.jsp" target="_blank" rel="noopener"><span>Center of Snow and Avalanche Research  |  Technical University of Darmstadt</span></a>
+      <a class="link-card" href="https://www.cld.uni-rostock.de/en/" target="_blank" rel="noopener"><span>Char of Lightweight Design  |  University of Rostock</span></a>
+    </div>
+  </div>
+</body>
+</html> 
