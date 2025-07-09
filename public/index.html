@@ -23,6 +23,8 @@
       justify-content: center;
       align-items: center;
       animation: fadeIn 1.2s cubic-bezier(.4,0,.2,1);
+      padding-left: 4vw;
+      padding-right: 4vw;
     }
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(30px); }
@@ -69,6 +71,18 @@
       transition: box-shadow 0.2s, transform 0.2s, background 0.2s;
       position: relative;
       overflow: hidden;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .link-logo {
+      width: 32px;
+      height: 32px;
+      object-fit: contain;
+      flex-shrink: 0;
+      border-radius: 0.4rem;
+      background: #f8fafc;
+      box-shadow: 0 1px 4px 0 rgba(30,41,59,0.07);
     }
     .link-card:after {
       content: '';
@@ -99,7 +113,7 @@
     }
     .authors {
       display: flex;
-      gap: 3rem;
+      gap: 1.2rem;
       margin-bottom: 2.2rem;
       justify-content: center;
       flex-wrap: wrap;
@@ -110,7 +124,7 @@
       box-shadow: 0 2px 12px 0 rgba(30,41,59,0.07);
       padding: 1.1rem 2.1rem;
       min-width: 260px;
-      margin: 0.5rem 0;
+      margin: 0.15rem 0;
       transition: box-shadow 0.2s, transform 0.2s;
       display: flex;
       align-items: center;
@@ -149,9 +163,12 @@
       flex-direction: column;
       justify-content: center;
     }
+    @media (max-width: 900px) {
+      .authors { flex-direction: column; gap: 0.2rem; align-items: center; }
+    }
     @media (max-width: 600px) {
-      .authors { gap: 1rem; }
-      .author { padding: 0.7rem 1rem; min-width: 140px; flex-direction: column; align-items: center; text-align: center; gap: 0.5rem; }
+      .authors { gap: 0.7rem; }
+      .author { padding: 0.7rem 1rem; min-width: 140px; flex-direction: column; align-items: center; text-align: center; gap: 0.5rem; margin: 0; }
       .author-info { align-items: center; }
       .author-name { font-size: 1rem; }
       .author-affil { font-size: 0.9rem; }
@@ -192,9 +209,18 @@
       </a>
     </div>
     <div class="links">
-      <a class="link-card" href="https://github.com/2phi/weac" target="_blank" rel="noopener"><span>Weak-layer anticrack nucleation model (WEAC) on GitHub</span></a>
-      <a class="link-card" href="https://www.ismd.tu-darmstadt.de/forschung_ismd/gruppen/center_of_snow_and_avalanche_research/csar_ismd.en.jsp" target="_blank" rel="noopener"><span>Center of Snow and Avalanche Research  |  Technical University of Darmstadt</span></a>
-      <a class="link-card" href="https://www.cld.uni-rostock.de/en/" target="_blank" rel="noopener"><span>Char of Lightweight Design  |  University of Rostock</span></a>
+      <a class="link-card" href="https://github.com/2phi/weac" target="_blank" rel="noopener">
+        <img src="assets/logos/github.png" alt="GitHub Logo" class="link-logo" />
+        <span>Weak-layer anticrack nucleation model (WEAC) on GitHub</span>
+      </a>
+      <a class="link-card" href="https://www.ismd.tu-darmstadt.de/forschung_ismd/gruppen/center_of_snow_and_avalanche_research/csar_ismd.en.jsp" target="_blank" rel="noopener">
+        <img src="assets/logos/csar.png" alt="CSAR TU Darmstadt Logo" class="link-logo" />
+        <span>Center of Snow and Avalanche Research  |  Technical University of Darmstadt</span>
+      </a>
+      <a class="link-card" href="https://www.cld.uni-rostock.de/en/" target="_blank" rel="noopener">
+        <img src="assets/logos/cld.png" alt="CLD Uni Rostock Logo" class="link-logo" />
+        <span>Chair of Lightweight Design  |  University of Rostock</span>
+      </a>
     </div>
   </div>
 </body>
