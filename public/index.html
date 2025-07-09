@@ -97,12 +97,100 @@
       .logo { width: 110px; height: 110px; }
       h1 { font-size: 1.3rem; }
     }
+    .authors {
+      display: flex;
+      gap: 3rem;
+      margin-bottom: 2.2rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .author {
+      background: rgba(255,255,255,0.92);
+      border-radius: 1.1rem;
+      box-shadow: 0 2px 12px 0 rgba(30,41,59,0.07);
+      padding: 1.1rem 2.1rem;
+      min-width: 260px;
+      margin: 0.5rem 0;
+      transition: box-shadow 0.2s, transform 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      text-align: left;
+    }
+    .author-avatar {
+      width: 72px;
+      height: 72px;
+      object-fit: cover;
+      border-radius: 50%;
+      background: #f8fafc;
+      flex-shrink: 0;
+      margin-bottom: 0;
+    }
+    .author:hover {
+      box-shadow: 0 6px 24px 0 rgba(30,41,59,0.13);
+      transform: translateY(-2px) scale(1.02);
+    }
+    .author-name {
+      display: block;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 0.3rem;
+      letter-spacing: 0.01em;
+    }
+    .author-affil {
+      display: block;
+      font-size: 0.98rem;
+      color: #64748b;
+      line-height: 1.3;
+    }
+    .author-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    @media (max-width: 600px) {
+      .authors { gap: 1rem; }
+      .author { padding: 0.7rem 1rem; min-width: 140px; flex-direction: column; align-items: center; text-align: center; gap: 0.5rem; }
+      .author-info { align-items: center; }
+      .author-name { font-size: 1rem; }
+      .author-affil { font-size: 0.9rem; }
+    }
+    .author-link {
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+    }
+    .author-link:focus .author,
+    .author-link:hover .author {
+      box-shadow: 0 8px 32px 0 rgba(30,41,59,0.18);
+      transform: translateY(-3px) scale(1.025);
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <img src="assets/logo.png" alt="2phi WEAC Logo" class="logo" />
-    <h1>2phi WEAC</h1>
+    <img src="assets/logos/2phi.png" alt="2phi logo" class="logo" />
+    <div class="authors">
+      <a class="author-link" href="https://scholar.google.com/citations?user=NRh6CSEAAAAJ&hl=de" target="_blank" rel="noopener">
+        <div class="author">
+          <img src="assets/portraits/rosendahl.jpg" alt="Dr. Philipp Rosendahl" class="author-avatar" />
+          <div class="author-info">
+            <span class="author-name">Dr.-Ing. Philipp Rosendahl</span>
+            <span class="author-affil">Center of Snow and Avalanche Research<br>Technical University of Darmstadt</span>
+          </div>
+        </div>
+      </a>
+      <a class="author-link" href="https://scholar.google.com/citations?user=wqJpE7UAAAAJ&hl=de" target="_blank" rel="noopener">
+        <div class="author">
+          <img src="assets/portraits/weissgraeber.png" alt="Dr. Philipp Weißgraeber" class="author-avatar" />
+          <div class="author-info">
+            <span class="author-name">Prof. Dr.-Ing. Philipp Weißgraeber</span>
+            <span class="author-affil">Chair of Lightweight Design<br>University of Rostock</span>
+          </div>
+        </div>
+      </a>
+    </div>
     <div class="links">
       <a class="link-card" href="https://github.com/2phi/weac" target="_blank" rel="noopener"><span>Weak-layer anticrack nucleation model (WEAC) on GitHub</span></a>
       <a class="link-card" href="https://www.ismd.tu-darmstadt.de/forschung_ismd/gruppen/center_of_snow_and_avalanche_research/csar_ismd.en.jsp" target="_blank" rel="noopener"><span>Center of Snow and Avalanche Research  |  Technical University of Darmstadt</span></a>
