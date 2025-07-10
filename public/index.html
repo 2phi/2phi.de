@@ -189,6 +189,73 @@
       .logo-weac { height: 132px; }
       .logo-pypi { height: 108px; }
     }
+
+    /* Tooltip Styles */
+    .tooltip {
+      position: absolute;
+      background: rgba(30, 41, 59, 0.95);
+      color: white;
+      padding: 0.75rem 1rem;
+      border-radius: 0.5rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      line-height: 1.4;
+      max-width: 280px;
+      z-index: 1000;
+      pointer-events: none;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.25), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: center;
+    }
+
+    .tooltip.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .tooltip::before {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+    }
+
+    .tooltip.top::before {
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border-top: 6px solid rgba(30, 41, 59, 0.95);
+    }
+
+    .tooltip.bottom::before {
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border-bottom: 6px solid rgba(30, 41, 59, 0.95);
+    }
+
+    /* Enhanced hover effects for tooltip elements */
+    [data-tooltip] {
+      position: relative;
+    }
+
+    /* Logo tooltips */
+    .grid-logo[data-tooltip]:hover {
+      filter: grayscale(0) brightness(1.15) opacity(1) drop-shadow(0 12px 32px rgba(59, 130, 246, 0.4));
+      transform: scale(1.4) rotate(-2deg);
+    }
+
+    /* Author tooltips */
+    .author[data-tooltip]:hover {
+      box-shadow: 0 8px 32px 0 rgba(30,41,59,0.18);
+      transform: translateY(-3px) scale(1.025);
+    }
   </style>
 </head>
 <body>
@@ -199,7 +266,7 @@
     <div class="section">
       <div class="authors">
         <a class="author-link" href="https://scholar.google.com/citations?user=NRh6CSEAAAAJ&hl=de" target="_blank" rel="noopener">
-          <div class="author">
+          <div class="author" data-tooltip="Google Scholar">
             <img src="assets/portraits/rosendahl.jpg" alt="Dr. Philipp Rosendahl" class="author-avatar" />
             <div class="author-info">
               <span class="author-name">Dr.-Ing. Philipp Rosendahl</span>
@@ -208,7 +275,7 @@
           </div>
         </a>
         <a class="author-link" href="https://scholar.google.com/citations?user=wqJpE7UAAAAJ&hl=de" target="_blank" rel="noopener">
-          <div class="author">
+          <div class="author" data-tooltip="Google Scholar">
             <img src="assets/portraits/weissgraeber.png" alt="Dr. Philipp Weißgraeber" class="author-avatar" />
             <div class="author-info">
               <span class="author-name">Prof. Dr.-Ing. Philipp Weißgraeber</span>
@@ -223,22 +290,122 @@
     <div class="section">
       <div class="logo-grid all-logos">
         <a href="https://www.ismd.tu-darmstadt.de/forschung_ismd/gruppen/center_of_snow_and_avalanche_research/csar_ismd.en.jsp" target="_blank" rel="noopener" class="logo-link">
-          <img src="assets/logos/csar.png" alt="Center of Snow and Avalanche Research" class="grid-logo logo-csar" title="Center of Snow and Avalanche Research" />
+          <img src="assets/logos/csar.png" alt="Center of Snow and Avalanche Research" class="grid-logo logo-csar" data-tooltip="Snow and avalanche research at TU Darmstadt" />
         </a>
         <a href="https://www.cld.uni-rostock.de" target="_blank" rel="noopener" class="logo-link">
-          <img src="assets/logos/cld.png" alt="Chair of Lightweight Design" class="grid-logo" title="Chair of Lightweight Design" />
+          <img src="assets/logos/cld.png" alt="Chair of Lightweight Design" class="grid-logo" data-tooltip="Structural mechanics at the University of Rostock" />
         </a>
         <a href="https://github.com/2phi/weac" target="_blank" rel="noopener" class="logo-link">
-          <img src="assets/logos/weac.png" alt="WEAC on GitHub" class="grid-logo logo-weac" title="Weak-layer anticrack nucleation model" />
+          <img src="assets/logos/weac.png" alt="WEAC on GitHub" class="grid-logo logo-weac" data-tooltip="Weak-layer anticrack nucleation model (WEAC) on GitHub" />
         </a>
         <a href="https://pypi.org/project/weac/" target="_blank" rel="noopener" class="logo-link">
-          <img src="assets/logos/pypi.png" alt="WEAC on PyPI" class="grid-logo logo-pypi" title="Install the PyPi package" />
+          <img src="assets/logos/pypi.png" alt="WEAC on PyPI" class="grid-logo logo-pypi" data-tooltip="Python package on PyPi" />
         </a>
         <a href="https://github.com/2phi/oracle/" target="_blank" rel="noopener" class="logo-link">
-          <img src="assets/logos/oracle.png" alt="Oracle on GitHub" class="grid-logo" title="Observation, Research, and Analysis of Collapse and Loading Experiments" />
+          <img src="assets/logos/oracle.png" alt="Oracle on GitHub" class="grid-logo" data-tooltip="Observation, Research, and Analysis of Collapse and Loading Experiments (ORACLE) on GitHub" />
         </a>
       </div>
     </div>
   </div>
+
+  <script>
+    // Tooltip functionality
+    class TooltipManager {
+      constructor() {
+        this.tooltip = null;
+        this.init();
+      }
+
+      init() {
+        // Create tooltip element
+        this.tooltip = document.createElement('div');
+        this.tooltip.className = 'tooltip';
+        document.body.appendChild(this.tooltip);
+
+        // Add event listeners
+        document.addEventListener('mouseover', this.handleMouseOver.bind(this));
+        document.addEventListener('mouseout', this.handleMouseOut.bind(this));
+      }
+
+      handleMouseOver(e) {
+        const element = e.target.closest('[data-tooltip]');
+        if (element) {
+          const tooltipText = element.getAttribute('data-tooltip');
+          if (tooltipText) {
+            this.showTooltip(tooltipText, element);
+            // Wait for hover transform to complete before positioning
+            setTimeout(() => {
+              this.updateCachedPosition();
+              this.positionTooltip();
+            }, 50);
+          }
+        }
+      }
+
+      handleMouseOut(e) {
+        const element = e.target.closest('[data-tooltip]');
+        if (element) {
+          this.hideTooltip();
+        }
+      }
+
+
+
+      showTooltip(text, element) {
+        this.tooltip.textContent = text;
+        this.tooltip.classList.add('show');
+        this.currentElement = element;
+        // Initial position cache (will be updated after hover transform)
+        this.cachedElementRect = element.getBoundingClientRect();
+      }
+
+      updateCachedPosition() {
+        if (this.currentElement) {
+          // Update cached position to use the scaled/transformed element
+          this.cachedElementRect = this.currentElement.getBoundingClientRect();
+        }
+      }
+
+      hideTooltip() {
+        this.tooltip.classList.remove('show', 'top', 'bottom');
+        this.currentElement = null;
+        this.cachedElementRect = null;
+      }
+
+      positionTooltip(mouseEvent) {
+        if (!this.tooltip.classList.contains('show') || !this.cachedElementRect) return;
+
+        const rect = this.tooltip.getBoundingClientRect();
+        
+        // Always show below the element
+        this.tooltip.classList.remove('top', 'bottom');
+        this.tooltip.classList.add('bottom');
+        
+        // Position horizontally (center on element, not cursor)
+        const elementCenterX = this.cachedElementRect.left + this.cachedElementRect.width / 2;
+        let left = elementCenterX - rect.width / 2;
+        const maxLeft = window.innerWidth - rect.width - 20;
+        left = Math.max(20, Math.min(left, maxLeft));
+        
+        // Position vertically (use cached element position for stability)
+        // Different spacing for institution vs code logos
+        const isCodeLogo = this.currentElement.src && (
+          this.currentElement.src.includes('weac.png') || 
+          this.currentElement.src.includes('oracle.png') || 
+          this.currentElement.src.includes('pypi.png')
+        );
+        const spacing = isCodeLogo ? 25 : 8; // Further for code logos, closer for institution logos
+        const top = this.cachedElementRect.bottom + spacing;
+        
+        this.tooltip.style.left = `${left}px`;
+        this.tooltip.style.top = `${top}px`;
+      }
+    }
+
+    // Initialize tooltips when DOM is loaded
+    document.addEventListener('DOMContentLoaded', () => {
+      new TooltipManager();
+    });
+  </script>
 </body>
 </html> 
