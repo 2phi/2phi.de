@@ -23,8 +23,7 @@
       justify-content: center;
       align-items: center;
       animation: fadeIn 1.2s cubic-bezier(.4,0,.2,1);
-      padding-left: 4vw;
-      padding-right: 4vw;
+      padding: 4rem 4vw 2rem 4vw;
     }
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(30px); }
@@ -40,6 +39,15 @@
     }
     .logo:hover {
       transform: scale(1.07) rotate(-2deg);
+    }
+    .slogan {
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: #64748b;
+      margin-bottom: 2.5rem;
+      letter-spacing: 0.02em;
+      text-align: center;
+      font-style: italic;
     }
     h1 {
       font-size: 2.2rem;
@@ -123,26 +131,33 @@
       box-shadow: 0 8px 32px 0 rgba(30,41,59,0.18);
       transform: translateY(-3px) scale(1.025);
     }
-    .logo-grid {
+    .section {
       width: 100%;
-      margin: 2.5rem 0 1.5rem 0;
-      background: transparent;
+      margin: 3rem 0;
+      text-align: center;
+    }
+    .section-title {
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: #1e293b;
+      margin-bottom: 1rem;
+      letter-spacing: 0.01em;
+    }
+    .section-subtitle {
+      font-size: 1rem;
+      color: #64748b;
+      margin-bottom: 2rem;
+    }
+    .logo-grid {
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 2rem 0;
-    }
-    .grid-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-      gap: 3rem;
-      max-width: 800px;
-      width: 100%;
-      justify-items: center;
-      align-items: center;
+      flex-wrap: wrap;
+      gap: 2.5rem;
+      padding: 1.5rem 0;
     }
     .grid-logo {
-      height: 80px;
+      height: 100px;
       width: auto;
       filter: grayscale(1) brightness(0.85) opacity(0.8);
       transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -151,29 +166,31 @@
     }
     .grid-logo:hover {
       filter: grayscale(0) brightness(1.1) opacity(1) drop-shadow(0 8px 24px rgba(59, 130, 246, 0.3));
-      transform: scale(2) rotate(-3deg);
+      transform: scale(1.5);
       z-index: 10;
     }
+    .logo-link {
+      display: inline-block;
+      transition: transform 0.2s;
+    }
+    .logo-link:hover {
+      transform: translateY(-2px);
+    }
     @media (max-width: 768px) {
-      .grid-container { 
-        grid-template-columns: repeat(3, 1fr);
+      .logo-grid {
+        flex-direction: column;
         gap: 2rem;
-        max-width: 600px;
+        align-items: center;
       }
-      .grid-logo { height: 60px; }
+      .grid-logo { height: 80px; }
       .grid-logo:hover {
-        transform: scale(1.8) rotate(-3deg);
+        transform: scale(1.5);
       }
     }
     @media (max-width: 480px) {
-      .grid-container { 
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
-        max-width: 400px;
-      }
-      .grid-logo { height: 50px; }
+      .grid-logo { height: 70px; }
       .grid-logo:hover {
-        transform: scale(1.6) rotate(-3deg);
+        transform: scale(1.5);
       }
     }
   </style>
@@ -181,38 +198,58 @@
 <body>
   <div class="container">
     <img src="assets/logos/2phi.png" alt="2phi logo" class="logo" />
-    <div class="authors">
-      <a class="author-link" href="https://scholar.google.com/citations?user=NRh6CSEAAAAJ&hl=de" target="_blank" rel="noopener">
-        <div class="author">
-          <img src="assets/portraits/rosendahl.jpg" alt="Dr. Philipp Rosendahl" class="author-avatar" />
-          <div class="author-info">
-            <span class="author-name">Dr.-Ing. Philipp Rosendahl</span>
-            <span class="author-affil">Center of Snow and Avalanche Research<br>Technical University of Darmstadt</span>
+    <p class="slogan">Software for public safety and engineering</p>
+    
+    <!-- Authors Section -->
+    <div class="section">
+      <div class="authors">
+        <a class="author-link" href="https://scholar.google.com/citations?user=NRh6CSEAAAAJ&hl=de" target="_blank" rel="noopener">
+          <div class="author">
+            <img src="assets/portraits/rosendahl.jpg" alt="Dr. Philipp Rosendahl" class="author-avatar" />
+            <div class="author-info">
+              <span class="author-name">Dr.-Ing. Philipp Rosendahl</span>
+              <span class="author-affil">Center of Snow and Avalanche Research<br>Technical University of Darmstadt</span>
+            </div>
           </div>
-        </div>
-      </a>
-      <a class="author-link" href="https://scholar.google.com/citations?user=wqJpE7UAAAAJ&hl=de" target="_blank" rel="noopener">
-        <div class="author">
-          <img src="assets/portraits/weissgraeber.png" alt="Dr. Philipp Weißgraeber" class="author-avatar" />
-          <div class="author-info">
-            <span class="author-name">Prof. Dr.-Ing. Philipp Weißgraeber</span>
-            <span class="author-affil">Chair of Lightweight Design<br>University of Rostock</span>
+        </a>
+        <a class="author-link" href="https://scholar.google.com/citations?user=wqJpE7UAAAAJ&hl=de" target="_blank" rel="noopener">
+          <div class="author">
+            <img src="assets/portraits/weissgraeber.png" alt="Dr. Philipp Weißgraeber" class="author-avatar" />
+            <div class="author-info">
+              <span class="author-name">Prof. Dr.-Ing. Philipp Weißgraeber</span>
+              <span class="author-affil">Chair of Lightweight Design<br>University of Rostock</span>
+            </div>
           </div>
-        </div>
-      </a>
-    </div>
-    <!-- Logo Grid Start -->
-    <div class="logo-grid">
-      <div class="grid-container">
-        <img src="assets/logos/2phi.png" alt="2phi" class="grid-logo" />
-        <img src="assets/logos/cld.png" alt="cld" class="grid-logo" />
-        <img src="assets/logos/csar.png" alt="csar" class="grid-logo" />
-        <img src="assets/logos/oracle.png" alt="oracle" class="grid-logo" />
-        <img src="assets/logos/pypi.png" alt="pypi" class="grid-logo" />
-        <img src="assets/logos/weac.png" alt="weac" class="grid-logo" />
+        </a>
       </div>
     </div>
-    <!-- Logo Grid End -->
+
+         <!-- Institutions Section -->
+     <div class="section">
+       <div class="logo-grid">
+         <a href="http://cld.uni-rostock.de/" target="_blank" rel="noopener" class="logo-link">
+           <img src="assets/logos/cld.png" alt="Chair of Lightweight Design" class="grid-logo" title="Chair of Lightweight Design" />
+         </a>
+         <a href="https://www.ismd.tu-darmstadt.de/forschung_ismd/gruppen/center_of_snow_and_avalanche_research/csar_ismd.en.jsp" target="_blank" rel="noopener" class="logo-link">
+           <img src="assets/logos/csar.png" alt="Center of Snow and Avalanche Research" class="grid-logo" title="Center of Snow and Avalanche Research" />
+         </a>
+       </div>
+     </div>
+
+     <!-- Code Section -->
+     <div class="section">
+       <div class="logo-grid">
+         <a href="https://github.com/2phi/weac" target="_blank" rel="noopener" class="logo-link">
+           <img src="assets/logos/weac.png" alt="WEAC on GitHub" class="grid-logo" title="Weak-layer anticrack nucleation model" />
+         </a>
+         <a href="https://pypi.org/project/weac/" target="_blank" rel="noopener" class="logo-link">
+           <img src="assets/logos/pypi.png" alt="WEAC on PyPI" class="grid-logo" title="Install the PyPi package" />
+         </a>
+         <a href="https://github.com/2phi/oracle/" target="_blank" rel="noopener" class="logo-link">
+           <img src="assets/logos/oracle.png" alt="Oracle on GitHub" class="grid-logo" title="Observation, Research, and Analysis of Collapse and Loading Experiments" />
+         </a>
+       </div>
+     </div>
   </div>
   
 </body>
