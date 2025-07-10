@@ -123,44 +123,58 @@
       box-shadow: 0 8px 32px 0 rgba(30,41,59,0.18);
       transform: translateY(-3px) scale(1.025);
     }
-    .logo-carousel {
-      width: 720px;
-      max-width: 95vw;
-      overflow: hidden;
-      margin: 2.5rem auto 1.5rem auto;
+    .logo-grid {
+      width: 100%;
+      margin: 2.5rem 0 1.5rem 0;
       background: transparent;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 90px;
-      position: relative;
-      border-radius: 1.5rem;
+      padding: 2rem 0;
     }
-    .carousel-track {
-      display: flex;
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 3rem;
+      max-width: 800px;
+      width: 100%;
+      justify-items: center;
       align-items: center;
-      gap: 2.5rem;
-      will-change: transform;
-      transition: none;
-      position: relative;
-      left: 0;
     }
-    .carousel-logo {
-      height: 64px;
-      filter: grayscale(1) brightness(0.85);
-      transition: filter 0.3s, transform 0.3s;
+    .grid-logo {
+      height: 80px;
+      width: auto;
+      filter: grayscale(1) brightness(0.85) opacity(0.8);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       cursor: pointer;
-      flex-shrink: 0;
+      object-fit: contain;
     }
-    .carousel-logo:hover {
-      filter: grayscale(0) brightness(1.05) drop-shadow(0 2px 8px rgba(30,41,59,0.10));
-      transform: scale(1.18) rotate(-2deg);
-      z-index: 2;
+    .grid-logo:hover {
+      filter: grayscale(0) brightness(1.1) opacity(1) drop-shadow(0 8px 24px rgba(59, 130, 246, 0.3));
+      transform: scale(2) rotate(-3deg);
+      z-index: 10;
     }
-    @media (max-width: 600px) {
-      .carousel-logo { height: 44px; }
-      .carousel-track { gap: 1.2rem; }
-      .logo-carousel { height: 90px; width: 98vw; }
+    @media (max-width: 768px) {
+      .grid-container { 
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        max-width: 600px;
+      }
+      .grid-logo { height: 60px; }
+      .grid-logo:hover {
+        transform: scale(1.8) rotate(-3deg);
+      }
+    }
+    @media (max-width: 480px) {
+      .grid-container { 
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        max-width: 400px;
+      }
+      .grid-logo { height: 50px; }
+      .grid-logo:hover {
+        transform: scale(1.6) rotate(-3deg);
+      }
     }
   </style>
 </head>
@@ -187,53 +201,19 @@
         </div>
       </a>
     </div>
-    <!-- Logo Carousel Start -->
-    <div class="logo-carousel">
-      <div class="carousel-track" id="carousel-track">
-        <img src="assets/logos/2phi.png" alt="2phi" class="carousel-logo" />
-        <img src="assets/logos/cld.png" alt="cld" class="carousel-logo" />
-        <img src="assets/logos/csar.png" alt="csar" class="carousel-logo" />
-        <img src="assets/logos/oracle.png" alt="oracle" class="carousel-logo" />
-        <img src="assets/logos/pypi.png" alt="pypi" class="carousel-logo" />
-        <img src="assets/logos/weac.png" alt="weac" class="carousel-logo" />
+    <!-- Logo Grid Start -->
+    <div class="logo-grid">
+      <div class="grid-container">
+        <img src="assets/logos/2phi.png" alt="2phi" class="grid-logo" />
+        <img src="assets/logos/cld.png" alt="cld" class="grid-logo" />
+        <img src="assets/logos/csar.png" alt="csar" class="grid-logo" />
+        <img src="assets/logos/oracle.png" alt="oracle" class="grid-logo" />
+        <img src="assets/logos/pypi.png" alt="pypi" class="grid-logo" />
+        <img src="assets/logos/weac.png" alt="weac" class="grid-logo" />
       </div>
     </div>
-    <!-- Logo Carousel End -->
+    <!-- Logo Grid End -->
   </div>
-  <script>
-    // True seamless infinite carousel JS
-    const track = document.getElementById('carousel-track');
-    const speed = 60; // px per second (consistent across all browsers)
-    let trackLeft = 0;
-    let animationId;
-    let lastTime = 0;
-
-    function animate(currentTime) {
-      if (!lastTime) lastTime = currentTime;
-      const deltaTime = (currentTime - lastTime) / 1000; // Convert to seconds
-      lastTime = currentTime;
-
-      // Move based on time elapsed, not frames
-      trackLeft -= speed * deltaTime;
-      
-      const firstLogo = track.children[0];
-      if (firstLogo) {
-        const logoWidth = firstLogo.offsetWidth + parseFloat(getComputedStyle(track).gap || 0);
-        if (-trackLeft >= logoWidth) {
-          // Move first logo to end and adjust trackLeft
-          track.appendChild(firstLogo);
-          trackLeft += logoWidth;
-        }
-      }
-      track.style.transform = `translateX(${trackLeft}px)`;
-      animationId = requestAnimationFrame(animate);
-    }
-
-    window.addEventListener('load', () => {
-      trackLeft = 0;
-      lastTime = 0;
-      animationId = requestAnimationFrame(animate);
-    });
-  </script>
+  
 </body>
 </html> 
