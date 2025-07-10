@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>2phi WEAC Landing Page</title>
+  <title>2phi</title>
   <link rel="icon" type="image/jpeg" href="assets/favicon.jpg">
   <style>
     html, body {
@@ -50,66 +50,6 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-    }
-    .links {
-      display: flex;
-      gap: 2rem;
-      margin-top: 2rem;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .link-card {
-      background: rgba(255,255,255,0.85);
-      border-radius: 1.2rem;
-      box-shadow: 0 2px 16px 0 rgba(30,41,59,0.07);
-      padding: 1.1rem 2.2rem;
-      text-align: center;
-      text-decoration: none;
-      color: #1e293b;
-      font-size: 1.1rem;
-      font-weight: 500;
-      transition: box-shadow 0.2s, transform 0.2s, background 0.2s;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-    .link-logo {
-      width: 32px;
-      height: 32px;
-      object-fit: contain;
-      flex-shrink: 0;
-      border-radius: 0.4rem;
-      background: #f8fafc;
-      box-shadow: 0 1px 4px 0 rgba(30,41,59,0.07);
-    }
-    .link-card:after {
-      content: '';
-      position: absolute;
-      left: 0; top: 0; right: 0; bottom: 0;
-      background: linear-gradient(120deg, #e0e7ef 0%, #f1f5f9 100%);
-      opacity: 0;
-      transition: opacity 0.3s;
-      z-index: 0;
-    }
-    .link-card:hover {
-      box-shadow: 0 6px 32px 0 rgba(30,41,59,0.13);
-      transform: translateY(-4px) scale(1.03);
-      background: rgba(236,245,255,0.97);
-    }
-    .link-card:hover:after {
-      opacity: 1;
-    }
-    .link-card span {
-      position: relative;
-      z-index: 1;
-    }
-    @media (max-width: 600px) {
-      .links { gap: 1rem; }
-      .link-card { padding: 0.8rem 1.2rem; font-size: 1rem; }
-      .logo { width: 110px; height: 110px; }
-      h1 { font-size: 1.3rem; }
     }
     .authors {
       display: flex;
@@ -183,6 +123,45 @@
       box-shadow: 0 8px 32px 0 rgba(30,41,59,0.18);
       transform: translateY(-3px) scale(1.025);
     }
+    .logo-carousel {
+      width: 720px;
+      max-width: 95vw;
+      overflow: hidden;
+      margin: 2.5rem auto 1.5rem auto;
+      background: transparent;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 90px;
+      position: relative;
+      border-radius: 1.5rem;
+    }
+    .carousel-track {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+      will-change: transform;
+      transition: none;
+      position: relative;
+      left: 0;
+    }
+    .carousel-logo {
+      height: 64px;
+      filter: grayscale(1) brightness(0.85);
+      transition: filter 0.3s, transform 0.3s;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .carousel-logo:hover {
+      filter: grayscale(0) brightness(1.05) drop-shadow(0 2px 8px rgba(30,41,59,0.10));
+      transform: scale(1.18) rotate(-2deg);
+      z-index: 2;
+    }
+    @media (max-width: 600px) {
+      .carousel-logo { height: 44px; }
+      .carousel-track { gap: 1.2rem; }
+      .logo-carousel { height: 90px; width: 98vw; }
+    }
   </style>
 </head>
 <body>
@@ -208,20 +187,53 @@
         </div>
       </a>
     </div>
-    <div class="links">
-      <a class="link-card" href="https://github.com/2phi/weac" target="_blank" rel="noopener">
-        <img src="assets/logos/github.png" alt="GitHub Logo" class="link-logo" />
-        <span>Weak-layer anticrack nucleation model (WEAC) on GitHub</span>
-      </a>
-      <a class="link-card" href="https://www.ismd.tu-darmstadt.de/forschung_ismd/gruppen/center_of_snow_and_avalanche_research/csar_ismd.en.jsp" target="_blank" rel="noopener">
-        <img src="assets/logos/csar.png" alt="CSAR TU Darmstadt Logo" class="link-logo" />
-        <span>Center of Snow and Avalanche Research  |  Technical University of Darmstadt</span>
-      </a>
-      <a class="link-card" href="https://www.cld.uni-rostock.de/en/" target="_blank" rel="noopener">
-        <img src="assets/logos/cld.png" alt="CLD Uni Rostock Logo" class="link-logo" />
-        <span>Chair of Lightweight Design  |  University of Rostock</span>
-      </a>
+    <!-- Logo Carousel Start -->
+    <div class="logo-carousel">
+      <div class="carousel-track" id="carousel-track">
+        <img src="assets/logos/2phi.png" alt="2phi" class="carousel-logo" />
+        <img src="assets/logos/cld.png" alt="cld" class="carousel-logo" />
+        <img src="assets/logos/csar.png" alt="csar" class="carousel-logo" />
+        <img src="assets/logos/oracle.png" alt="oracle" class="carousel-logo" />
+        <img src="assets/logos/pypi.png" alt="pypi" class="carousel-logo" />
+        <img src="assets/logos/weac.png" alt="weac" class="carousel-logo" />
+      </div>
     </div>
+    <!-- Logo Carousel End -->
   </div>
+  <script>
+    // True seamless infinite carousel JS
+    const track = document.getElementById('carousel-track');
+    const speed = 60; // px per second (consistent across all browsers)
+    let trackLeft = 0;
+    let animationId;
+    let lastTime = 0;
+
+    function animate(currentTime) {
+      if (!lastTime) lastTime = currentTime;
+      const deltaTime = (currentTime - lastTime) / 1000; // Convert to seconds
+      lastTime = currentTime;
+
+      // Move based on time elapsed, not frames
+      trackLeft -= speed * deltaTime;
+      
+      const firstLogo = track.children[0];
+      if (firstLogo) {
+        const logoWidth = firstLogo.offsetWidth + parseFloat(getComputedStyle(track).gap || 0);
+        if (-trackLeft >= logoWidth) {
+          // Move first logo to end and adjust trackLeft
+          track.appendChild(firstLogo);
+          trackLeft += logoWidth;
+        }
+      }
+      track.style.transform = `translateX(${trackLeft}px)`;
+      animationId = requestAnimationFrame(animate);
+    }
+
+    window.addEventListener('load', () => {
+      trackLeft = 0;
+      lastTime = 0;
+      animationId = requestAnimationFrame(animate);
+    });
+  </script>
 </body>
 </html> 
