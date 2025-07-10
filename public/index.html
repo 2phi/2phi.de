@@ -23,7 +23,7 @@
       justify-content: center;
       align-items: center;
       animation: fadeIn 1.2s cubic-bezier(.4,0,.2,1);
-      padding: 4rem 4vw 2rem 4vw;
+      padding: 1.5rem 1vw 1rem 1vw;
     }
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(30px); }
@@ -40,15 +40,6 @@
     .logo:hover {
       transform: scale(1.07) rotate(-2deg);
     }
-    .slogan {
-      font-size: 1.1rem;
-      font-weight: 400;
-      color: #64748b;
-      margin-bottom: 2.5rem;
-      letter-spacing: 0.02em;
-      text-align: center;
-      font-style: italic;
-    }
     h1 {
       font-size: 2.2rem;
       font-weight: 700;
@@ -61,16 +52,17 @@
     }
     .authors {
       display: flex;
-      gap: 1.2rem;
-      margin-bottom: 2.2rem;
+      gap: 0.8rem;
+      margin-bottom: 0.5rem;
       justify-content: center;
       flex-wrap: wrap;
+      padding: 0 2rem;
     }
     .author {
       background: rgba(255,255,255,0.92);
       border-radius: 1.1rem;
       box-shadow: 0 2px 12px 0 rgba(30,41,59,0.07);
-      padding: 1.1rem 2.1rem;
+      padding: 1.5rem 1.8rem;
       min-width: 260px;
       margin: 0.15rem 0;
       transition: box-shadow 0.2s, transform 0.2s;
@@ -115,8 +107,8 @@
       .authors { flex-direction: column; gap: 0.2rem; align-items: center; }
     }
     @media (max-width: 600px) {
-      .authors { gap: 0.7rem; }
-      .author { padding: 0.7rem 1rem; min-width: 140px; flex-direction: column; align-items: center; text-align: center; gap: 0.5rem; margin: 0; }
+      .authors { gap: 0.5rem; padding: 0 1rem; }
+      .author { padding: 1rem 1.3rem; min-width: 140px; flex-direction: column; align-items: center; text-align: center; gap: 0.5rem; margin: 0; }
       .author-info { align-items: center; }
       .author-name { font-size: 1rem; }
       .author-affil { font-size: 0.9rem; }
@@ -133,7 +125,7 @@
     }
     .section {
       width: 100%;
-      margin: 3rem 0;
+      margin: 1rem 0;
       text-align: center;
     }
     .section-title {
@@ -153,8 +145,11 @@
       justify-content: center;
       align-items: center;
       flex-wrap: wrap;
-      gap: 2.5rem;
-      padding: 1.5rem 0;
+      gap: 2rem;
+      padding: 0.7rem 0;
+    }
+    .all-logos {
+      gap: 3rem;
     }
     .grid-logo {
       height: 100px;
@@ -166,8 +161,18 @@
     }
     .grid-logo:hover {
       filter: grayscale(0) brightness(1.1) opacity(1) drop-shadow(0 8px 24px rgba(59, 130, 246, 0.3));
-      transform: scale(1.5);
+      transform: scale(1.35) rotate(-2deg);
       z-index: 10;
+    }
+    .logo-weac {
+      height: 110px;
+    }
+    .logo-pypi {
+      height: 90px;
+    }
+    .logo-csar {
+      margin-left: -20px;
+      margin-right: -25px;
     }
     .logo-link {
       display: inline-block;
@@ -176,21 +181,35 @@
     .logo-link:hover {
       transform: translateY(-2px);
     }
-    @media (max-width: 768px) {
+    @media (max-width: 480px) {
       .logo-grid {
         flex-direction: column;
-        gap: 2rem;
+        gap: 1.2rem;
         align-items: center;
       }
-      .grid-logo { height: 80px; }
-      .grid-logo:hover {
-        transform: scale(1.5);
+      .all-logos {
+        gap: 1.2rem;
       }
     }
-    @media (max-width: 480px) {
-      .grid-logo { height: 70px; }
+    @media (max-width: 768px) {
+      .grid-logo { height: 85px; }
+      .logo-weac { height: 94px; }
+      .logo-pypi { height: 77px; }
       .grid-logo:hover {
-        transform: scale(1.5);
+        transform: scale(1.35) rotate(-2deg);
+      }
+    }
+    @media (max-width: 600px) {
+      .grid-logo { height: 75px; }
+      .logo-weac { height: 83px; }
+      .logo-pypi { height: 68px; }
+    }
+    @media (max-width: 480px) {
+      .grid-logo { height: 65px; }
+      .logo-weac { height: 72px; }
+      .logo-pypi { height: 59px; }
+      .grid-logo:hover {
+        transform: scale(1.35) rotate(-2deg);
       }
     }
   </style>
@@ -198,7 +217,6 @@
 <body>
   <div class="container">
     <img src="assets/logos/2phi.png" alt="2phi logo" class="logo" />
-    <p class="slogan">Software for public safety and engineering</p>
     
     <!-- Authors Section -->
     <div class="section">
@@ -224,26 +242,20 @@
       </div>
     </div>
 
-         <!-- Institutions Section -->
+         <!-- All Logos Section -->
      <div class="section">
-       <div class="logo-grid">
-         <a href="http://cld.uni-rostock.de/" target="_blank" rel="noopener" class="logo-link">
+       <div class="logo-grid all-logos">
+         <a href="https://www.ismd.tu-darmstadt.de/forschung_ismd/gruppen/center_of_snow_and_avalanche_research/csar_ismd.en.jsp" target="_blank" rel="noopener" class="logo-link">
+           <img src="assets/logos/csar.png" alt="Center of Snow and Avalanche Research" class="grid-logo logo-csar" title="Center of Snow and Avalanche Research" />
+         </a>
+         <a href="https://www.cld.uni-rostock.de" target="_blank" rel="noopener" class="logo-link">
            <img src="assets/logos/cld.png" alt="Chair of Lightweight Design" class="grid-logo" title="Chair of Lightweight Design" />
          </a>
-         <a href="https://www.ismd.tu-darmstadt.de/forschung_ismd/gruppen/center_of_snow_and_avalanche_research/csar_ismd.en.jsp" target="_blank" rel="noopener" class="logo-link">
-           <img src="assets/logos/csar.png" alt="Center of Snow and Avalanche Research" class="grid-logo" title="Center of Snow and Avalanche Research" />
-         </a>
-       </div>
-     </div>
-
-     <!-- Code Section -->
-     <div class="section">
-       <div class="logo-grid">
          <a href="https://github.com/2phi/weac" target="_blank" rel="noopener" class="logo-link">
-           <img src="assets/logos/weac.png" alt="WEAC on GitHub" class="grid-logo" title="Weak-layer anticrack nucleation model" />
+           <img src="assets/logos/weac.png" alt="WEAC on GitHub" class="grid-logo logo-weac" title="Weak-layer anticrack nucleation model" />
          </a>
          <a href="https://pypi.org/project/weac/" target="_blank" rel="noopener" class="logo-link">
-           <img src="assets/logos/pypi.png" alt="WEAC on PyPI" class="grid-logo" title="Install the PyPi package" />
+           <img src="assets/logos/pypi.png" alt="WEAC on PyPI" class="grid-logo logo-pypi" title="Install the PyPi package" />
          </a>
          <a href="https://github.com/2phi/oracle/" target="_blank" rel="noopener" class="logo-link">
            <img src="assets/logos/oracle.png" alt="Oracle on GitHub" class="grid-logo" title="Observation, Research, and Analysis of Collapse and Loading Experiments" />
