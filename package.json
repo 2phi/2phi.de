@@ -1,7 +1,7 @@
 {
   "name": "2phi.de",
   "version": "1.0.0",
-  "description": "2phi.de - Research group website with responsive design and mobile scroll focus with captions",
+  "description": "2phi.de - Research group website with responsive design and mobile touch highlighting with captions",
   "main": "public/index.html",
   "scripts": {
     "dev": "live-server public --port=3000 --open=/index.html",
