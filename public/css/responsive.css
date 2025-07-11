@@ -58,4 +58,11 @@
   .grid-logo { height: 120px; }
   .logo-weac { height: 132px; }
   .logo-pypi { height: 108px; }
+  
+  /* Mobile caption adjustments */
+  [data-tooltip]::after {
+    font-size: 0.7rem;
+    max-width: min(180px, 88vw);
+    padding: 0.3rem 0.4rem;
+  }
 } 
