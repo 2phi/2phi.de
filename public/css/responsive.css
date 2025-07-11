@@ -1,114 +1,239 @@
-/* Responsive Design */
+/* ==========================================================================
+   Responsive Design System
+   ========================================================================== */
 
+/* 
+ * Responsive Philosophy:
+ * - Mobile-first approach with progressive enhancement
+ * - Consistent design tokens across all breakpoints
+ * - Content-driven breakpoints based on optimal reading experience
+ * - Graceful degradation for all screen sizes
+ */
+
+/* Responsive Design Tokens */
+:root {
+  /* Breakpoint-specific spacing adjustments */
+  --container-padding-tablet: var(--space-4xl) 1vw;
+  --container-padding-mobile: var(--space-5xl) 1vw;
+  --container-padding-small: var(--space-4xl) 0.5rem;
+  
+  /* Responsive logo sizing */
+  --grid-logo-tablet: 85px;
+  --grid-logo-mobile: 75px;
+  --grid-logo-small: min(120px, 25vw);
+  --grid-logo-tiny: min(80px, 20vw);
+  
+  /* Responsive author card adjustments */
+  --author-min-width-mobile: 140px;
+  --author-padding-mobile: var(--space-xl) var(--space-2xl);
+  
+  /* Responsive typography */
+  --font-size-name-mobile: var(--font-size-lg);
+  --font-size-affil-mobile: 0.9rem;
+  --font-size-tooltip-mobile: 0.7rem;
+  --font-size-tooltip-tiny: var(--font-size-xs);
+}
+
+/* ==========================================================================
+   Tablet Layout (≤ 900px)
+   ========================================================================== */
+
+/* 
+ * Transition point where author cards stack vertically
+ * Maintains comfortable spacing and readability
+ */
 @media (max-width: 900px) {
   .authors { 
     flex-direction: column; 
-    gap: 1rem; 
+    gap: var(--space-xl); 
     align-items: center; 
   }
 }
 
-@media (max-width: 768px) {
-  .container { padding: 2rem 1vw; }
-  .grid-logo { height: 85px; }
-  .logo-weac { height: 94px; }
-  .logo-pypi { height: 77px; }
-}
+/* ==========================================================================
+   Small Tablet / Large Mobile (≤ 768px)
+   ========================================================================== */
 
-@media (max-width: 600px) {
-  .container { padding: 2.5rem 1vw; }
-  
-  .authors { 
-    gap: 1.5rem; 
-    padding: 0 1rem; 
+/* 
+ * Optimize for landscape tablet and large mobile screens
+ * Reduce logo sizes while maintaining visual hierarchy
+ */
+@media (max-width: 768px) {
+  .container { 
+    padding: var(--container-padding-tablet); 
   }
   
+  /* Logo grid size adjustments */
+  .grid-logo { 
+    height: var(--grid-logo-tablet); 
+  }
+  
+  .logo-weac { 
+    height: calc(var(--grid-logo-tablet) + 9px); 
+  }
+  
+  .logo-pypi { 
+    height: calc(var(--grid-logo-tablet) - 8px); 
+  }
+}
+
+/* ==========================================================================
+   Mobile Portrait (≤ 600px)
+   ========================================================================== */
+
+/* 
+ * Primary mobile breakpoint - significant layout changes
+ * Author cards become more compact and centered
+ * Focus on thumb-friendly interaction areas
+ */
+@media (max-width: 600px) {
+  .container { 
+    padding: var(--container-padding-mobile); 
+  }
+  
+  /* Author section optimizations */
+  .authors { 
+    gap: var(--space-3xl); 
+    padding: 0 var(--space-xl); 
+  }
+  
+  /* Author card mobile layout */
   .author { 
-    padding: 1rem 1.3rem; 
-    min-width: 140px; 
+    padding: var(--author-padding-mobile); 
+    min-width: var(--author-min-width-mobile); 
     flex-direction: column; 
     align-items: center; 
     text-align: center; 
-    gap: 0.5rem; 
+    gap: var(--space-md); 
   }
   
-  .author-info { align-items: center; }
-  .author-name { font-size: 1rem; }
-  .author-affil { font-size: 0.9rem; }
+  .author-info { 
+    align-items: center; 
+  }
   
-  .grid-logo { height: 75px; }
-  .logo-weac { height: 83px; }
-  .logo-pypi { height: 68px; }
+  /* Mobile typography adjustments */
+  .author-name { 
+    font-size: var(--font-size-name-mobile); 
+  }
+  
+  .author-affil { 
+    font-size: var(--font-size-affil-mobile); 
+  }
+  
+  /* Logo grid mobile sizing */
+  .grid-logo { 
+    height: var(--grid-logo-mobile); 
+  }
+  
+  .logo-weac { 
+    height: calc(var(--grid-logo-mobile) + 8px); 
+  }
+  
+  .logo-pypi { 
+    height: calc(var(--grid-logo-mobile) - 7px); 
+  }
 }
 
+/* ==========================================================================
+   Small Mobile (≤ 480px)
+   ========================================================================== */
+
+/* 
+ * Optimize for smaller mobile screens
+ * Vertical logo grid for better thumb navigation
+ * Enhanced spacing for touch interactions
+ */
 @media (max-width: 480px) {
-  .container { padding: 3rem 1vw; }
+  .container { 
+    padding: var(--container-padding-mobile); 
+  }
   
+  /* Hero logo adjustments */
   .logo {
-    margin-top: 2rem;
-    margin-bottom: 3rem;
+    margin-top: var(--space-4xl);
+    margin-bottom: var(--space-5xl);
   }
   
+  /* Increased author spacing */
   .authors {
-    gap: 2rem;
+    gap: var(--space-4xl);
   }
   
+  /* Vertical logo grid layout */
   .logo-grid {
     flex-direction: column;
-    gap: 1.2rem;
-    padding: 0.7rem 2rem 2rem;
+    gap: var(--space-2xl);
+    padding: var(--space-lg) var(--space-4xl) var(--space-4xl);
   }
   
+  /* Responsive logo sizing with viewport constraints */
   .grid-logo { 
-    height: min(120px, 25vw);
+    height: var(--grid-logo-small);
     max-width: 80vw;
   }
+  
   .logo-weac { 
     height: min(132px, 27vw);
     max-width: 80vw;
   }
+  
   .logo-pypi { 
     height: min(108px, 22vw);
     max-width: 80vw;
   }
   
-  /* Mobile caption adjustments */
+  /* Mobile tooltip optimizations */
   [data-tooltip]::after {
-    font-size: 0.7rem;
+    font-size: var(--font-size-tooltip-mobile);
     max-width: min(180px, 88vw);
-    padding: 0.3rem 0.4rem;
+    padding: var(--space-sm) 0.4rem;
   }
 }
 
+/* ==========================================================================
+   Extra Small Mobile (≤ 320px)
+   ========================================================================== */
+
+/* 
+ * Support for very small screens and older devices
+ * Maximum content density while maintaining usability
+ */
 @media (max-width: 320px) {
-  .container { padding: 2rem 0.5rem; }
+  .container { 
+    padding: var(--container-padding-small); 
+  }
   
+  /* Compact hero logo */
   .logo {
     width: min(140px, 35vw);
     height: min(140px, 35vw);
   }
   
+  /* Tight logo grid spacing */
   .logo-grid {
-    padding: 0.5rem 1rem 1.5rem;
-    gap: 1rem;
+    padding: var(--space-md) var(--space-xl) var(--space-3xl);
+    gap: var(--space-xl);
   }
   
+  /* Minimal logo sizing */
   .grid-logo { 
-    height: min(80px, 20vw);
+    height: var(--grid-logo-tiny);
     max-width: 75vw;
   }
+  
   .logo-weac { 
     height: min(88px, 22vw);
     max-width: 75vw;
   }
+  
   .logo-pypi { 
     height: min(72px, 18vw);
     max-width: 75vw;
   }
   
-  /* Extra small caption adjustments */
+  /* Compact tooltip styling */
   [data-tooltip]::after {
-    font-size: 0.65rem;
+    font-size: var(--font-size-tooltip-tiny);
     max-width: min(140px, 85vw);
     padding: 0.25rem 0.35rem;
   }
