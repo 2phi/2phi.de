@@ -1,11 +1,11 @@
-# 2phi Website
+# 2phi.de
 
 A modern, modularized website for the 2phi research group showcasing snow and avalanche research.
 
 ## 🏗️ Project Structure
 
 ```
-2phi-website/
+2phi.de/
 ├── public/                    # Public web files
 │   ├── css/                   # Modularized CSS files
 │   │   ├── base.css          # Base styles and layout
