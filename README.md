@@ -5,21 +5,15 @@ A modern website for the 2phi research group showcasing snow and avalanche resea
 ## 🚀 Getting Started
 
 ### Prerequisites
-- Node.js (for development server - required for ES6 modules)
 - LFTP (for deployment)
 
 ### Development
 ```bash
-# Install dependencies
-npm install
-
-# Start development server
-npm run dev
+# Open the website directly in your browser
+open public/index.html
 ```
 
-The development server will open at `http://localhost:3000`
-
-**Note**: A development server is required because this website uses ES6 modules, which cannot be loaded directly from the filesystem due to browser CORS restrictions.
+The website is a static HTML/CSS site that works perfectly in any modern browser.
 
 ## 🚢 Deployment
 
@@ -41,7 +35,6 @@ npm run deploy
 2phi.de/
 ├── public/                    # Web files
 │   ├── css/                   # Modularized stylesheets
-│   ├── js/                    # ES6 modules
 │   ├── assets/                # Images and logos
 │   └── index.html             # Main page
 ├── deploy.sh                  # Deployment script
