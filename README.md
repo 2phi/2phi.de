@@ -1,146 +1,57 @@
 # 2phi.de
 
-A modern, modularized website for the 2phi research group showcasing snow and avalanche research.
-
-## 🏗️ Project Structure
-
-```
-2phi.de/
-├── public/                    # Public web files
-│   ├── css/                   # Modularized CSS files
-│   │   ├── base.css          # Base styles and layout
-│   │   ├── components.css    # Component-specific styles
-│   │   ├── animations.css    # Animations and tooltips
-│   │   └── responsive.css    # Media queries and responsive design
-│   ├── js/                   # Modularized JavaScript files
-│   │   ├── TooltipManager.js # Tooltip functionality
-│   │   └── main.js          # Application initialization
-│   ├── assets/              # Static assets
-│   │   ├── logos/           # Logo images
-│   │   └── portraits/       # Author portraits
-│   ├── index.html                  # Clean modular HTML (main file)
-│   └── index-monolithic-backup.html # Original monolithic HTML (backup)
-├── lftp.config             # LFTP configuration with credentials (gitignored)
-├── lftp.config.example     # LFTP configuration template (no credentials)
-├── deploy.sh               # Automated LFTP deployment script
-├── package.json           # Node.js project configuration
-└── README.md              # This file
-```
+A modern website for the 2phi research group showcasing snow and avalanche research.
 
 ## 🚀 Getting Started
 
 ### Prerequisites
-- Node.js (for development server)
+- Node.js (for development server - required for ES6 modules)
 - LFTP (for deployment)
 
-### Installation
+### Development
 ```bash
 # Install dependencies
 npm install
 
-# Setup LFTP configuration
-cp lftp.config.example lftp.config
-# Edit lftp.config with your actual FTP credentials
-```
-
-### Development
-```bash
-# Start development server (modular architecture)
+# Start development server
 npm run dev
-
-# Or start with original monolithic version (backup)
-npm run dev-original
-
-# Or manually
-npm start
 ```
 
 The development server will open at `http://localhost:3000`
 
-## 📝 Key Improvements
-
-### ✅ LFTP Configuration Optimized
-- Purpose-built `lftp.config` format for LFTP compatibility
-- Added `LFTP_PASSWORD` environment variable for security
-- Included connection timeout and retry settings
-- Added transfer optimization parameters
-
-### ✅ Modularized CSS Architecture
-- **`base.css`**: Core layout and typography
-- **`components.css`**: Author cards, logos, and UI components  
-- **`animations.css`**: Animations, transitions, and tooltips
-- **`responsive.css`**: Media queries for mobile responsiveness
-
-### ✅ Modularized JavaScript
-- **`TooltipManager.js`**: Sophisticated tooltip functionality as ES6 module
-- **`main.js`**: Application initialization and orchestration
-- Clean separation of concerns and reusable components
-
-### ✅ Enhanced HTML Structure
-- Clean, semantic HTML without inline styles
-- External CSS and JavaScript references
-- Maintained all original functionality
-- Improved maintainability and readability
-
-## 🔧 LFTP Configuration
-
-The project includes optimized LFTP configuration:
-
-### Basic Usage
-```bash
-# Setup configuration
-cp lftp.config.example lftp.config
-# Edit lftp.config with your actual credentials
-
-# Deploy using npm script
-npm run deploy
-
-# Or manually with LFTP
-source lftp.config
-export LFTP_PASSWORD="$FTP_PASSWORD"
-lftp --env-password -u $FTP_USERNAME $FTP_HOST
-```
-
-### Configuration Files
-- `lftp.config` - Your actual LFTP configuration with credentials (gitignored)
-- `lftp.config.example` - Template for LFTP settings (no credentials)
-
-## 🎨 Features
-
-- **Responsive Design**: Optimized for all screen sizes
-- **Interactive Tooltips**: Hover effects with contextual information
-- **Modern CSS**: Flexbox layout with smooth animations
-- **Clean Architecture**: Modular, maintainable code structure
-- **Performance Optimized**: Efficient loading and rendering
-- **Accessibility**: Semantic HTML and proper ARIA attributes
-
-## 📱 Browser Support
-
-- Chrome/Edge 88+
-- Firefox 78+
-- Safari 14+
-- Mobile browsers (iOS Safari, Chrome Mobile)
+**Note**: A development server is required because this website uses ES6 modules, which cannot be loaded directly from the filesystem due to browser CORS restrictions.
 
 ## 🚢 Deployment
 
+### Setup
 ```bash
-# Build and validate
-npm run build
+# Copy LFTP configuration template
+cp lftp.config.example lftp.config
+# Edit lftp.config with your FTP credentials
+```
 
-# Deploy via LFTP (customize deploy script)
+### Deploy
+```bash
 npm run deploy
 ```
 
-## 🤝 Development Workflow
+## 📁 Project Structure
 
-1. **Development**: Use `npm run dev` for live reloading
-2. **Testing**: Test your modular website
-3. **Building**: Run `npm run build` to validate
-4. **Deployment**: Use LFTP with optimized configuration
+```
+2phi.de/
+├── public/                    # Web files
+│   ├── css/                   # Modularized stylesheets
+│   ├── js/                    # ES6 modules
+│   ├── assets/                # Images and logos
+│   └── index.html             # Main page
+├── deploy.sh                  # Deployment script
+├── lftp.config.example        # FTP config template
+└── package.json               # Node.js configuration
+```
 
 ## 📄 License
 
-MIT License - see LICENSE file for details
+MIT License
 
 ## 👥 Authors
 
