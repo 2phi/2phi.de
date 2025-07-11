@@ -5,9 +5,8 @@ node_modules/
 dist/
 build/
 
-# Environment variables
-.env
-.env.*
+# Configuration files with credentials
+lftp.config
 
 # OS generated files
 .DS_Store

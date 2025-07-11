@@ -1,0 +1,10 @@
+# LFTP Server Configuration - Optimized for LFTP
+# Copy this file to lftp.config and fill in your actual credentials
+
+# Basic connection settings
+FTP_HOST=your-ftp-server.com
+FTP_USERNAME=your-username
+FTP_PASSWORD=your-password
+
+# LFTP_PASSWORD is set automatically by deploy.sh from FTP_PASSWORD
+# All LFTP optimization settings are configured in deploy.sh 

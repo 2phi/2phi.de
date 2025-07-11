@@ -1,0 +1,36 @@
+{
+  "name": "2phi-website",
+  "version": "1.0.0",
+  "description": "2phi website",
+  "main": "public/index.html",
+  "scripts": {
+    "dev": "live-server public --port=3000 --open=/index.html",
+    "dev-original": "live-server public --port=3000 --open=/index-monolithic-backup.html",
+    "start": "npm run dev",
+    "build": "echo 'Building website...' && npm run validate",
+    "validate": "echo 'Validating HTML and CSS...'",
+    "deploy": "./deploy.sh",
+    "test": "echo 'No tests specified yet'"
+  },
+  "keywords": [
+    "research",
+    "snow",
+    "avalanche",
+    "2phi",
+    "science",
+    "academic"
+  ],
+  "author": "2phi Research Group",
+  "license": "MIT",
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/2phi/2phi-website.git"
+  },
+  "bugs": {
+    "url": "https://github.com/2phi/2phi-website/issues"
+  },
+  "homepage": "https://2phi.de"
+} 

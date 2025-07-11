@@ -1,0 +1,138 @@
+/* Component Styles */
+
+/* Logo Styles */
+.logo {
+  width: 160px;
+  height: 160px;
+  object-fit: contain;
+  margin-bottom: 2rem;
+  filter: drop-shadow(0 4px 16px rgba(0,0,0,0.08));
+  transition: transform 0.3s cubic-bezier(.4,0,.2,1);
+}
+
+.logo:hover {
+  transform: scale(1.07) rotate(-2deg);
+}
+
+/* Author Cards */
+.authors {
+  display: flex;
+  gap: 0.8rem;
+  margin-bottom: 0.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 0 2rem;
+}
+
+.author {
+  background: rgba(255,255,255,0.92);
+  border-radius: 1.1rem;
+  box-shadow: 0 2px 12px 0 rgba(30,41,59,0.07);
+  padding: 1.5rem 1.8rem;
+  min-width: 260px;
+  margin: 0.15rem 0;
+  transition: box-shadow 0.2s, transform 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  text-align: left;
+}
+
+.author-avatar {
+  width: 72px;
+  height: 72px;
+  object-fit: cover;
+  border-radius: 50%;
+  background: #f8fafc;
+  flex-shrink: 0;
+}
+
+.author:hover {
+  box-shadow: 0 6px 24px 0 rgba(30,41,59,0.13);
+  transform: translateY(-2px) scale(1.02);
+}
+
+.author-name {
+  display: block;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 0.3rem;
+  letter-spacing: 0.01em;
+}
+
+.author-affil {
+  display: block;
+  font-size: 0.98rem;
+  color: #64748b;
+  line-height: 1.3;
+}
+
+.author-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.author-link {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+}
+
+.author-link:focus .author,
+.author-link:hover .author {
+  box-shadow: 0 8px 32px 0 rgba(30,41,59,0.18);
+  transform: translateY(-3px) scale(1.025);
+}
+
+/* Logo Grid */
+.logo-grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 0.7rem 1.5rem;
+}
+
+.all-logos {
+  gap: 3rem;
+}
+
+.grid-logo {
+  height: 100px;
+  width: auto;
+  filter: grayscale(1) brightness(0.85) opacity(0.8);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  object-fit: contain;
+}
+
+.grid-logo:hover {
+  filter: grayscale(0) brightness(1.1) opacity(1) drop-shadow(0 8px 24px rgba(59, 130, 246, 0.3));
+  transform: scale(1.35) rotate(-2deg);
+  z-index: 10;
+}
+
+/* Specific Logo Adjustments */
+.logo-weac {
+  height: 110px;
+}
+
+.logo-pypi {
+  height: 90px;
+}
+
+.logo-csar {
+  margin-left: -30px;
+  margin-right: -35px;
+}
+
+.logo-cld {
+  height: 100px;
+}
+
+.logo-link {
+  display: inline-block;
+} 

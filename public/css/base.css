@@ -1,0 +1,27 @@
+/* Base Styles and Layout */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+  background: linear-gradient(135deg, #f8fafc 0%, #e0e7ef 100%);
+  min-height: 100vh;
+  color: #222;
+  overflow-x: hidden;
+}
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 1.2s cubic-bezier(.4,0,.2,1);
+  padding: 1.5rem 1vw 1rem 1vw;
+}
+
+.section {
+  width: 100%;
+  margin: 1rem 0;
+  text-align: center;
+} 
