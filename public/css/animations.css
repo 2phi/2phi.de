@@ -9,12 +9,16 @@
 .author:hover {
   box-shadow: 0 6px 24px 0 rgba(30,41,59,0.13);
   transform: translateY(-2px) scale(1.02);
+  z-index: 100;
+  position: relative;
 }
 
 .author-link:focus .author,
 .author-link:hover .author {
   box-shadow: 0 8px 32px 0 rgba(30,41,59,0.18);
   transform: translateY(-3px) scale(1.025);
+  z-index: 100;
+  position: relative;
 }
 
 .grid-logo:hover {
@@ -26,6 +30,10 @@
 /* Caption System - Unobtrusive */
 [data-tooltip] {
   position: relative;
+}
+
+[data-tooltip]:hover {
+  z-index: 200;
 }
 
 [data-tooltip]::after {
@@ -49,7 +57,7 @@
   opacity: 0;
   margin-top: 0.5rem;
   transition: opacity 0.15s ease-out;
-  z-index: 1000;
+  z-index: 1001;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(2px);
 }

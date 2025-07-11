@@ -3,7 +3,7 @@
 @media (max-width: 900px) {
   .authors { 
     flex-direction: column; 
-    gap: 0.5rem; 
+    gap: 1rem; 
     align-items: center; 
   }
 }
@@ -19,7 +19,7 @@
   .container { padding: 2.5rem 1vw; }
   
   .authors { 
-    gap: 0.5rem; 
+    gap: 1.5rem; 
     padding: 0 1rem; 
   }
   
@@ -47,6 +47,10 @@
   .logo {
     margin-top: 2rem;
     margin-bottom: 3rem;
+  }
+  
+  .authors {
+    gap: 2rem;
   }
   
   .logo-grid {
