@@ -1,12 +1,13 @@
 /**
- * Mobile Touch Highlighting with Persistent Focus
- * Robust touch-based highlighting and caption display for mobile devices
+ * Universal Touch/Click Highlighting with Persistent Focus
+ * Robust interaction highlighting and caption display for all devices
  */
 
-// Only run on touch devices
-if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+// Run on all browsers for consistent experience
+(function() {
   
   let currentlyFocused = null;
+  let isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
   // Remove focus from current element
   function clearCurrentFocus() {
@@ -25,24 +26,26 @@ if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
     element.classList.add('show-caption');
   }
 
-  // Handle touch events
-  function handleTouch(event) {
+  // Handle interaction events (touch or click)
+  function handleInteraction(event) {
     // Find the closest interactive element
-    const touchedElement = event.target.closest('.author, .logo-link');
+    const targetElement = event.target.closest('.author, .logo-link');
     
-    if (touchedElement) {
-      // Prevent default to avoid unwanted behaviors
-      event.preventDefault();
+    if (targetElement) {
+      // Prevent default behavior for touch events
+      if (event.type === 'touchstart') {
+        event.preventDefault();
+      }
       
-      // If touching the same element, clear focus (toggle off)
-      if (touchedElement === currentlyFocused) {
+      // If interacting with the same element, clear focus (toggle off)
+      if (targetElement === currentlyFocused) {
         clearCurrentFocus();
       } else {
         // Focus on the new element
-        setFocus(touchedElement);
+        setFocus(targetElement);
       }
     } else {
-      // Touched outside interactive elements, clear focus
+      // Touched/clicked outside interactive elements, clear focus
       clearCurrentFocus();
     }
   }
@@ -52,27 +55,40 @@ if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
     // Add touch-based highlighting class to body for CSS targeting
     document.body.classList.add('mobile-touch-enabled');
 
-    // Add touch event listeners to the container
+    // Add event listeners to the container
     const container = document.querySelector('.container');
     
     if (container) {
-      // Use touchstart for immediate response
-      container.addEventListener('touchstart', handleTouch, { passive: false });
-      
-      // Also handle clicks for hybrid devices
-      container.addEventListener('click', (event) => {
-        // Only handle if not a link click (let links work normally)
-        if (!event.target.closest('a')) {
-          handleTouch(event);
-        }
-      });
+      if (isTouchDevice) {
+        // Touch devices: prioritize touch events
+        container.addEventListener('touchstart', handleInteraction, { passive: false });
+        // Also add click as fallback
+        container.addEventListener('click', (event) => {
+          if (!event.target.closest('a')) {
+            handleInteraction(event);
+          }
+        });
+      } else {
+        // Non-touch devices: use click events
+        container.addEventListener('click', (event) => {
+          if (!event.target.closest('a')) {
+            handleInteraction(event);
+          }
+        });
+      }
     }
 
-    // Clear focus when touching outside the container
-    document.addEventListener('touchstart', (event) => {
+    // Clear focus when interacting outside the container
+    const clearOutsideHandler = (event) => {
       if (!event.target.closest('.container')) {
         clearCurrentFocus();
       }
-    }, { passive: true });
+    };
+
+    if (isTouchDevice) {
+      document.addEventListener('touchstart', clearOutsideHandler, { passive: true });
+    } else {
+      document.addEventListener('click', clearOutsideHandler);
+    }
   });
-} 
+})(); 
