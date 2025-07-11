@@ -59,14 +59,57 @@
     padding: 0.7rem 2rem 2rem;
   }
   
-  .grid-logo { height: 120px; }
-  .logo-weac { height: 132px; }
-  .logo-pypi { height: 108px; }
+  .grid-logo { 
+    height: min(120px, 25vw);
+    max-width: 80vw;
+  }
+  .logo-weac { 
+    height: min(132px, 27vw);
+    max-width: 80vw;
+  }
+  .logo-pypi { 
+    height: min(108px, 22vw);
+    max-width: 80vw;
+  }
   
   /* Mobile caption adjustments */
   [data-tooltip]::after {
     font-size: 0.7rem;
     max-width: min(180px, 88vw);
     padding: 0.3rem 0.4rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .container { padding: 2rem 0.5rem; }
+  
+  .logo {
+    width: min(140px, 35vw);
+    height: min(140px, 35vw);
+  }
+  
+  .logo-grid {
+    padding: 0.5rem 1rem 1.5rem;
+    gap: 1rem;
+  }
+  
+  .grid-logo { 
+    height: min(80px, 20vw);
+    max-width: 75vw;
+  }
+  .logo-weac { 
+    height: min(88px, 22vw);
+    max-width: 75vw;
+  }
+  .logo-pypi { 
+    height: min(72px, 18vw);
+    max-width: 75vw;
+  }
+  
+  /* Extra small caption adjustments */
+  [data-tooltip]::after {
+    font-size: 0.65rem;
+    max-width: min(140px, 85vw);
+    padding: 0.25rem 0.35rem;
   }
 } 
