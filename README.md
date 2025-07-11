@@ -13,7 +13,7 @@ A modern website for the 2phi research group showcasing snow and avalanche resea
 open public/index.html
 ```
 
-The website is a static HTML/CSS site that works perfectly in any modern browser.
+The website is a static HTML/CSS site with minimal JavaScript for mobile scroll highlighting on touch devices.
 
 ## 🚢 Deployment
 
