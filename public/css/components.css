@@ -1,6 +1,6 @@
-/* Component Styles */
+/* Components */
 
-/* Logo Styles */
+/* Main Logo */
 .logo {
   width: 160px;
   height: 160px;
@@ -14,7 +14,7 @@
   transform: scale(1.07) rotate(-2deg);
 }
 
-/* Author Cards */
+/* Authors */
 .authors {
   display: flex;
   gap: 0.8rem;
@@ -31,7 +31,7 @@
   padding: 1.5rem 1.8rem;
   min-width: 260px;
   margin: 0.15rem 0;
-  transition: box-shadow 0.2s, transform 0.2s;
+  transition: all 0.2s;
   display: flex;
   align-items: center;
   gap: 1.2rem;
@@ -45,11 +45,6 @@
   border-radius: 50%;
   background: #f8fafc;
   flex-shrink: 0;
-}
-
-.author:hover {
-  box-shadow: 0 6px 24px 0 rgba(30,41,59,0.13);
-  transform: translateY(-2px) scale(1.02);
 }
 
 .author-name {
@@ -80,24 +75,14 @@
   display: flex;
 }
 
-.author-link:focus .author,
-.author-link:hover .author {
-  box-shadow: 0 8px 32px 0 rgba(30,41,59,0.18);
-  transform: translateY(-3px) scale(1.025);
-}
-
 /* Logo Grid */
 .logo-grid {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  gap: 2rem;
-  padding: 0.7rem 1.5rem;
-}
-
-.all-logos {
   gap: 3rem;
+  padding: 0.7rem 1.5rem;
 }
 
 .grid-logo {
@@ -109,29 +94,10 @@
   object-fit: contain;
 }
 
-.grid-logo:hover {
-  filter: grayscale(0) brightness(1.1) opacity(1) drop-shadow(0 8px 24px rgba(59, 130, 246, 0.3));
-  transform: scale(1.35) rotate(-2deg);
-  z-index: 10;
-}
-
-/* Specific Logo Adjustments */
-.logo-weac {
-  height: 110px;
-}
-
-.logo-pypi {
-  height: 90px;
-}
-
-.logo-csar {
-  margin-left: -30px;
-  margin-right: -35px;
-}
-
-.logo-cld {
-  height: 100px;
-}
+/* Logo Size Adjustments */
+.logo-weac { height: 110px; }
+.logo-pypi { height: 90px; }
+.logo-csar { margin: 0 -32px; }
 
 .logo-link {
   display: inline-block;

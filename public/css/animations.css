@@ -1,12 +1,29 @@
-/* Animations and Captions */
+/* Animations & Interactions */
 
-/* Keyframe Animations */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(30px); }
   to { opacity: 1; transform: none; }
 }
 
-/* Caption System - Pure CSS */
+/* Hover Effects */
+.author:hover {
+  box-shadow: 0 6px 24px 0 rgba(30,41,59,0.13);
+  transform: translateY(-2px) scale(1.02);
+}
+
+.author-link:focus .author,
+.author-link:hover .author {
+  box-shadow: 0 8px 32px 0 rgba(30,41,59,0.18);
+  transform: translateY(-3px) scale(1.025);
+}
+
+.grid-logo:hover {
+  filter: grayscale(0) brightness(1.1) opacity(1) drop-shadow(0 8px 24px rgba(59, 130, 246, 0.3));
+  transform: scale(1.35) rotate(-2deg);
+  z-index: 10;
+}
+
+/* Caption System */
 [data-tooltip] {
   position: relative;
 }
@@ -40,18 +57,7 @@
   opacity: 1;
 }
 
-/* Enhanced hover effects for caption elements */
-.logo-link[data-tooltip]:hover .grid-logo {
-  filter: grayscale(0) brightness(1.15) opacity(1) drop-shadow(0 12px 32px rgba(59, 130, 246, 0.4));
-  transform: scale(1.4) rotate(-2deg);
-}
-
-.author[data-tooltip]:hover {
-  box-shadow: 0 8px 32px 0 rgba(30,41,59,0.18);
-  transform: translateY(-3px) scale(1.025);
-}
-
-/* Specific spacing adjustments for different element types */
+/* Caption Positioning */
 .logo-link[data-tooltip]::after {
   margin-top: 1rem;
 }
