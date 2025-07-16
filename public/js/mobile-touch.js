@@ -97,7 +97,7 @@
 
   /**
    * Core interaction handler for both touch and click events
-   * Implements toggle behavior for focused elements
+   * Implements double-tap behavior: first tap highlights, second tap follows link
    * 
    * @param {Event} event - The interaction event (touch or click)
    */
@@ -106,15 +106,16 @@
     const targetElement = event.target.closest(CONFIG.interactiveSelector);
     
     if (shouldFocusElement(targetElement)) {
-      // Prevent default touch behavior to avoid conflicts
-      if (event.type === 'touchstart') {
-        event.preventDefault();
-      }
-      
-      // Toggle behavior: if same element is clicked, clear focus
+      // Check if this element is already focused (second tap)
       if (targetElement === InteractionState.currentlyFocused) {
-        clearCurrentFocus();
+        // Second tap on already focused element - allow link to work
+        // Don't preventDefault, let the browser handle the navigation
+        return;
       } else {
+        // First tap on this element - highlight it and prevent default
+        if (event.type === 'touchstart') {
+          event.preventDefault();
+        }
         setElementFocus(targetElement);
       }
     } else {
