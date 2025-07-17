@@ -1,6 +1,6 @@
 # 2phi.de
 
-A modern website for the 2phi research group showcasing snow and avalanche research.
+A modern website for the 2phi organization.
 
 ## 🚀 Getting Started
 
