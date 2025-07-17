@@ -2,7 +2,6 @@
   <br>
   <img src="public/assets/logos/2phi.png" alt="2phi logo" width="120" height="120">
   <br>
-  <br>
   <b>2phi.de</b>
   <br>
 </h1>
