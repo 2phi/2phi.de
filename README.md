@@ -11,7 +11,7 @@
 ## 🚀 Getting Started
 
 ### Prerequisites
-- LFTP (for deployment)
+- [LFTP](https://lftp.yar.ru) (for deployment)
 
 ### Development
 ```bash
