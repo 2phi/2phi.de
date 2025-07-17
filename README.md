@@ -1,8 +1,15 @@
-<img src="public/assets/logos/2phi.png" alt="2phi logo" width="120" height="120"><br>
+<h1 align="center">
+  <br>
+  <img src="public/assets/logos/2phi.png" alt="2phi logo" width="120" height="120">
+  <br>
+  <br>
+  <b>2phi.de</b>
+  <br>
+  <sub><sup>A modern website for the 2phi organization</sup></sub>
+  <br>
+</h1>
 
-# 2phi.de
-
-A modern website for the 2phi organization.
+<br>
 
 ## 🚀 Getting Started
 
