@@ -58,16 +58,7 @@ Favicons are managed according to [this guide](https://dev.to/masakudamatsu/favi
 
 Displaying the favicons requires
 - that files and directories in `public/assets/favicon/` are readable (permissions 755 for directories, 644 for files),
-- and that there is a `.htaccess` file in `public/assets/favicon/` with the following content:
-  ```
-  <IfModule mod_authz_core.c>
-    Require all granted
-  </IfModule>
-  <IfModule !mod_authz_core.c>
-    Order allow,deny
-    Allow from all
-  </IfModule>
-  ```
+- and that there is a `.htaccess` file in `public/assets/favicon/` configured accordingly.
 This allows Apache to serve favicon files correctly.
 
 ## 👥 Authors
