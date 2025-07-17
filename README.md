@@ -19,9 +19,8 @@ The website is a static HTML/CSS site with minimal JavaScript for mobile touch h
 
 ### Setup
 ```bash
-# Copy LFTP configuration template
+# Rename LFTP configuration template and edit with your FTP credentials
 cp lftp.config.example lftp.config
-# Edit lftp.config with your FTP credentials
 ```
 
 ### Deploy
@@ -35,8 +34,10 @@ npm run deploy
 2phi.de/
 ├── public/                    # Web files
 │   ├── css/                   # Modularized stylesheets
-│   ├── assets/                # Images, logos, favicons
-│   │   └── favicon/           # Favicon images and .htaccess
+│   ├── assets/                # Images, logos, favicons, and author portraits
+│   │   ├── favicon/           # Favicon images, .htaccess, and manifest assets
+│   │   ├── logos/             # Logos of partner institutions and projects
+│   │   └── portraits/         # Author/people images for the website
 │   ├── site.webmanifest       # Web app manifest (at root for best compatibility)
 │   └── index.html             # Main page
 ├── favicon/                   # Source and export files for favicons
@@ -45,25 +46,13 @@ npm run deploy
 └── package.json               # Node.js configuration
 ```
 
-## 📄 License
-
-MIT License
-
 ## 🖼️ Favicon & Manifest Management
 
-- Favicon assets are located in `public/assets/favicon/` and `favicon/` (for source and export files).
-- The main favicon files used by the website are:
-  - `favicon.ico`, `favicon.svg`, `favicon-96x96.png`, `apple-touch-icon.png` (in `public/assets/favicon/`)
-  - The web app manifest is at the root as `/site.webmanifest` and referenced in `index.html` as:
-    ```html
-    <link rel="manifest" href="/site.webmanifest" />
-    ```
-- If you update or add favicon files, make sure to commit, push, and redeploy.
+Favicons are managed according to [this guide](https://dev.to/masakudamatsu/favicon-nightmare-how-to-maintain-sanity-3al7) and generated using [RealFaviconGenerator](https://realfavicongenerator.net).
 
-### Apache/.htaccess Fix
-If you encounter 403 Forbidden errors for favicon files, ensure that:
-- All files and directories in `public/assets/favicon/` are readable (permissions 755 for directories, 644 for files).
-- There is a `.htaccess` file in `public/assets/favicon/` with the following content:
+Displaying the favicons requires
+- that files and directories in `public/assets/favicon/` are readable (permissions 755 for directories, 644 for files),
+- and that there is a `.htaccess` file in `public/assets/favicon/` with the following content:
   ```
   <IfModule mod_authz_core.c>
     Require all granted
