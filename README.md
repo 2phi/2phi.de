@@ -3,10 +3,10 @@
   <img src="public/assets/logos/2phi.png" alt="2phi logo" width="120" height="120">
   <br>
   <b>2phi.de</b>
-  <br>
 </h1>
+<p align="center">A modern website for the 2phi organization.</p>
+<br>
 
-A modern website for the 2phi organization.
 
 ## 🚀 Getting Started
 
