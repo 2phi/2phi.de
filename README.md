@@ -1,3 +1,5 @@
+<img src="public/assets/logos/2phi.png" alt="2phi logo" width="120" height="120"><br>
+
 # 2phi.de
 
 A modern website for the 2phi organization.
