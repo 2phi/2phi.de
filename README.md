@@ -5,11 +5,9 @@
   <br>
   <b>2phi.de</b>
   <br>
-  <sub><sup>A modern website for the 2phi organization</sup></sub>
-  <br>
 </h1>
 
-<br>
+A modern website for the 2phi organization.
 
 ## 🚀 Getting Started
 
